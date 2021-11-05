@@ -2,11 +2,19 @@
     <head>
         <title>PriceIsRight</title>
         <link href = "style.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com"> 
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+        <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     </head>
     <body> 
         <script src="script.js"></script>
         <p id = "score">Score: 0</p>
-        <p id = "how-to-play">How to play</p>
+        <div>
+            <button onclick="showInstructions()" class = "how-to-play" id = "dropdown">How to play</button>
+            <p class = "how-to-play" id= "instructions">
+                Choose which product you think costs more! Choose right, you move on. Choose wrong, you die!
+            </p>
+        </div>
         <h1 id="vs">vs</h1>
         <button onclick="testLeft()" class="item-description" id= "left-item-description">Canon PowerShot SX420 is Digital Camera (Black) with 64GB SD Memory Card + Accessory Bundle + Rtech Digital Cloth</button>
         <button onclick="testRight()" class="item-description" id="right-image-description">Apple Watch Series 7</button>
