@@ -1,0 +1,143 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+#vs {
+    font-family:Arial;
+    z-index: 3;
+    font-weight:100;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, 0%);
+    border-radius: 50%;
+    font-size: 40px;
+    background-color: white;
+    padding: 0.1em 0.2em;
+    border: 3px solid black;
+}
+.item-image {
+    box-sizing: border-box;
+    z-index: 1;
+    display: inline;
+    position: fixed;
+    height: 100%;
+    text-align: center;
+    margin-top: 100px;
+    object-fit: cover;
+    width: 50%;
+    overflow: hidden;
+    top: -12%;
+    filter: brightness(50%);
+}
+
+.right-item-image {
+    right: 0;
+    border-left: 2px solid black;
+}
+
+.left-item-image {
+    left: 0;
+    border-right: 2px solid black;
+}
+
+#score {
+    position: fixed;
+    z-index: 2;
+    bottom: 10px;
+    display: inline-block;
+    border: 2px solid black;
+    padding: 5px 1%;
+    left: 5px;
+    background-color: honeydew;
+    border-radius: 10px;
+    color: black;
+    font-family:Arial, Helvetica, sans-serif
+}
+
+.item-description {
+    box-sizing: border-box;
+    position: fixed;
+    z-index: 4;
+    font-size: 35px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+    height: auto;
+    top: 30%;
+    padding: 10px 10px;
+    color:white;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 3px solid black;
+}
+
+.item-description:hover {
+    background-color: white;
+    border: none;
+    color: black;
+    cursor: pointer;
+}
+
+#left-item-description {
+    margin-left: 10%;
+    margin-right: 60%;
+}
+
+#right-image-description {
+    margin-right: 10%;
+    margin-left: 60%;
+}
+
+.response {
+    position: absolute;
+    display: none;
+    z-index: 10;
+    width: 30px;
+    top: 25%;
+    animation-name: bounceIn;
+    animation-duration: 300ms;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+#how-to-play {
+    z-index: 2;
+    box-sizing: border-box;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    position: fixed;
+    display: block;
+    top: 15%;
+    background-color: white;
+    border: 3px solid black;
+    padding: 10px 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+@keyframes bounceIn{
+    0%{
+      opacity: 0;
+      transform: scale(0.3) translate3d(0,0,0);
+    }
+    50%{
+      opacity: 0.9;
+      transform: scale(1.1);
+    }
+    80%{
+      opacity: 1;
+      transform: scale(0.89);
+    }
+    100%{
+      opacity: 1;
+      transform: scale(1) translate3d(0,0,0);
+    }
+}
+
+
