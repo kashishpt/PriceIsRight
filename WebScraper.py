@@ -23,7 +23,7 @@ def scrape(word):
         for item in table:
             cleaned = clean(item)
             if cleaned:
-                f.write("%s\n%s\n%s\n%s\n%s\n\n"%(str(cleaned[0]), str(cleaned[1]), str(cleaned[2]), str(cleaned[3]), str(cleaned[4])))
+                f.write("%s\n%s\n%s\n\n"%(str(cleaned[0]), str(cleaned[1]), str(cleaned[2])))
                 return cleaned
     
 
@@ -31,28 +31,19 @@ def scrape(word):
 
 def clean(data):
     name = None
-    rating = None
-    numRatings = None
     price = None
     word = data.text
     if "Sponsored" not in word:
         price = data.find(attrs={"data-a-color":"base"})                                        # finds price
         if price:
             price = price.text.strip()[0:int(0.5*len(price.text.strip()))]
-            rating = data.find("span", class_ = "a-icon-alt")                                   # finds rating
-            if rating:
-                rating = rating.text.strip()
-                name = data.find("span", class_ = "a-size-medium a-color-base a-text-normal")   # finds name
-                if name:
-                    name = name.text.strip()
-                    numRatings = data.find("span", class_ = "a-size-base")                      # finds number of ratings
-                    if numRatings:
-                        numRatings = numRatings.text.strip()
-                        image = data.find("img")
-                        imgSource = image['src']
-                        if imgSource:
-                            item = [name, rating, numRatings, price, imgSource]
-                            return item
+            name = data.find("span", class_ = "a-size-base-plus")   # finds name
+            if name:
+                name = name.text.strip()
+                image = data.find("img")
+                imgSource = image['src']                   # finds number of ratings
+                if imgSource:
+                    return [name, price, imgSource]
     return None
 
 with open("items_to_be_scraped.txt") as f:
