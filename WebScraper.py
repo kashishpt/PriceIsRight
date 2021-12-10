@@ -6,14 +6,12 @@ from selenium.webdriver.common.keys import Keys
 import time
 import random
 
-def scrape(word, file):
+def scrape(word):
     word.replace(" ", "+")
     
     url = "https://www.amazon.com/s?k=" + word + "&ref=nb_sb_noss"
-    options = webdriver.ChromeOptions()
-    options.binary_location = "/Applications/Google Chrome.app"
-    options.add_argument("headless")
-    driver = webdriver.Chrome(chrome_options=options)
+     #driver = webdriver.Chrome("/Applications/Google Chrome.app")
+    driver = webdriver.Chrome("/Users/kashishpatel/Downloads/chromedriver")
     driver.get(url)
     time.sleep(4)
 
@@ -21,12 +19,11 @@ def scrape(word, file):
 
     soup = BeautifulSoup(html, "html.parser")
     table = soup.find_all(attrs={"data-component-type":"s-search-result"})
-    names = []
-    with open(file, "w") as f:
+    with open("items.txt", "a") as f:
         for item in table:
             cleaned = clean(item)
             if cleaned:
-                f.write("%s\n%s\n%s\n%s\n\n"%(str(cleaned[0]), str(cleaned[1]), str(cleaned[2]), str(cleaned[3])))
+                f.write("%s\n%s\n%s\n%s\n%s\n\n"%(str(cleaned[0]), str(cleaned[1]), str(cleaned[2]), str(cleaned[3]), str(cleaned[4])))
                 return cleaned
     
 
@@ -51,34 +48,14 @@ def clean(data):
                     numRatings = data.find("span", class_ = "a-size-base")                      # finds number of ratings
                     if numRatings:
                         numRatings = numRatings.text.strip()
-                        item = [name, rating, numRatings, price]
-                        return item
+                        image = data.find("img")
+                        imgSource = image['src']
+                        if imgSource:
+                            item = [name, rating, numRatings, price, imgSource]
+                            return item
     return None
 
-def playGame(word1, word2):
-    item1 = scrape(word1, "item1.txt")
-    item2 = scrape(word2, "item2.text")
-
-    name1 = item1[0]
-    name2 = item2[0]
-    guess = int(input("Which one is more expensive: \n%s\n\nOR\n\n%s\n" % (name1, name2)))
-    price1 = float(item1[3][1:])
-    price2 = float(item2[3][1:])
-    more = None
-    less = None
-    if price1 > price2:
-        more = item1[0]
-        less = item2[0]
-        answer = 1
-    else:
-        more = item2[0]
-        less = item1[0]
-        answer = 2
-    if guess == answer:
-        print("CORRECT! \n%s\n\ncosts more then \n\n%s" % (more, less))
-    else:
-        print("INCORRECT! \n%s\n\ncosts more then \n\n%s" % (more, less))
-    print("%s costs %s\n%s costs %s" % (item1[0], item1[3], item2[0], item2[3]))
-
-playGame("apple watch", "TV")
-
+with open("items_to_be_scraped.txt") as f:
+    list = f.readlines()
+    for line in list:
+        scrape(line)
