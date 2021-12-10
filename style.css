@@ -21,21 +21,42 @@
     transform: translate(-50%, 0%);
     border-radius: 50%;
     font-size: 40px;
-    background-color: white;
+    background-color: #fcf6e3;
     padding: 0.1em 0.2em;
     border: 3px solid black;
-    opacity: 70%;
+}
+
+#new-game {
+    position: fixed;
+    z-index: 2;
+    bottom:5%;
+    display: inline-block;
+    border: 2px solid;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    color: black;
+    background-color: #fcf6e3;
+    font-size:x-large;
+    padding: 7px 13px;
+
+}
+
+#new-game:hover {
+    cursor: pointer;
+    background-color: #82cdff;
+    color: black;
+    border-radius: 10px;
 }
 
 #score {
     position: fixed;
     z-index: 2;
-    bottom: 10px;
+    bottom: 5%;
     display: inline-block;
     border: 2px solid black;
     padding: 5px 1%;
     left: 5px;
-    background-color: honeydew;
+    background-color: #fcf6e3;
     border-radius: 10px;
     color: black;
 }
@@ -47,18 +68,13 @@
     transform: translate(-50%, 0%);
     position: fixed;
     display: block;
-    top: 10px;
+    top: 5%;
     height: 50px;
     width: 150px;
-    background-color: white;
+    background-color: #fcf6e3;
     border: 3px solid black;
     padding: 10px 15px;
     font-size: 20px;
-    opacity: 70%;
-}
-
-#dropdown {
-    border-radius: 10px 10px 0px 0px;
 }
 
 #instructions {
@@ -66,16 +82,17 @@
     background-color: white;
     box-sizing: border-box;
     position: fixed;
-    top: 60px;
+    top: 12%;
     width: 300px;
     font-size: 20px;
     height: auto;
-    border-radius: 5px 5px 10px 10px;
+    border-radius: 10px;
 }
 
 #dropdown:hover {
     cursor: context-menu;
     background-color: #82cdff;
+    border-radius: 10px;
 }
 
 .item-image {
@@ -93,17 +110,23 @@
     filter: brightness(50%);
 }
 
-.right-item-image {
+#right-item-image {
     right: 0;
     border-left: 2px solid black;
 }
 
-.left-item-image {
+#left-item-image {
     left: 0;
     border-right: 2px solid black;
 }
 
+.item-description:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
 .item-description {
+    display: none;
     box-sizing: border-box;
     position: fixed;
     z-index: 4;
@@ -119,20 +142,13 @@
     transition: all 0.2s ease;
 }
 
-.item-description:hover {
-    background-color: #fdff87;
-    opacity: 80%;
-    color: black;
-    cursor: pointer;
-    transform: scale(1.05);
-}
 
 #left-item-description {
     margin-left: 10%;
     margin-right: 60%;
 }
 
-#right-image-description {
+#right-item-description {
     margin-right: 10%;
     margin-left: 60%;
 }
