@@ -51,11 +51,12 @@
 #score {
     position: fixed;
     z-index: 2;
-    bottom: 5%;
+    bottom: 15%;
     display: inline-block;
     border: 2px solid black;
     padding: 5px 1%;
-    left: 5px;
+    left: 50%;
+    transform: translate(-50%, 0);
     background-color: #fcf6e3;
     border-radius: 10px;
     color: black;
@@ -124,6 +125,7 @@
     cursor: pointer;
     transform: scale(1.05);
     border-radius: 13px;
+    opacity: 100%;
 }
 
 .item-description {
@@ -136,11 +138,13 @@
     height: auto;
     top: 30%;
     padding: 10px 10px;
-    color:white;
+    color:black;
     background-color: transparent;
     border-radius: 4px;
     border: 3px solid black;
     transition: all 0.2s ease;
+    opacity: 70%;
+    background-color: #faff69;
 }
 
 
@@ -152,37 +156,5 @@
 #right-item-description {
     margin-right: 10%;
     margin-left: 60%;
-}
-
-.response {
-    opacity: 70%;
-    position: fixed;
-    display: none;
-    z-index: 10;
-    width: 30px;
-    top: 40%;
-    animation-name: springIn;
-    animation-duration: 300ms;
-    animation-timing-function: linear;
-    animation-fill-mode: forwards;
-}
-
-@keyframes springIn{
-    0%{
-      opacity: 0;
-      transform: scale(0.3) translate3d(0,0,0);
-    }
-    50%{
-      opacity: 0.5;
-      transform: scale(1.1);
-    }
-    80%{
-      opacity: 0.7;
-      transform: scale(0.89);
-    }
-    100%{
-      opacity: 0.7;
-      transform: scale(1) translate3d(0,0,0);
-    }
 }
 
